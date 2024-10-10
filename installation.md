@@ -136,7 +136,7 @@ Let's make a systemd service to make it run automatically. Stop `hass` and creat
 sudo nano /etc/systemd/system/homeassistant.service
 ```
 
-```toml
+```ini
 [Unit]
 Description=Home Assistant
 After=network-online.target
@@ -255,7 +255,7 @@ If everything is ok, let's create a systemd service:
 sudo nano /etc/systemd/system/zigbee2mqtt.service
 ```
 
-```toml
+```ini
 [Unit]
 Description=zigbee2mqtt
 After=network.target
@@ -320,7 +320,7 @@ sudo nano /etc/systemd/system/ipfs-daemon.service
 
 Create a systemd service:
 
-```toml
+```ini
 [Unit]
 Description=IPFS Daemon Service
 
@@ -358,7 +358,7 @@ If everything is alright, let's create a service:
 sudo nano /etc/systemd/system/lp2p-proxy.service
 ```
 
-```toml
+```ini
 [Unit]
 Description= Libp2p Proxy Service
 
@@ -367,6 +367,8 @@ Type=simple
 WorkingDirectory=/home/ubuntu/libp2p-ws-proxy/
 ExecStart=/usr/bin/node src/index.js
 User=ubuntu
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
